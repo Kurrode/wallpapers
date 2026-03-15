@@ -6,15 +6,16 @@ TARGET_DIR="$HOME/.local/share/wallpapers"
 # Ensure the directory exists
 mkdir -p "$TARGET_DIR"
 
-echo "Installing wallpapers to $TARGET_DIR..."
+echo "Installing wallpapers into $TARGET_DIR..."
 
-# Loop through all files in the current directory
-for file in *; do
-  # Skip the installer, the readme, and any directories
-  if [[ "$file" != "install.sh" && "$file" != "README.md" && -f "$file" ]]; then
-    cp -v "$file" "$TARGET_DIR/"
-    echo "Copied: $file"
-  fi
-done
+# Use rsync to copy everything
+# -a: archive mode (preserves folder structure and permissions)
+# -v: verbose (shows progress)
+# --exclude: keeps the script, readme, and git data out of the destination
+rsync -av \
+  --exclude='install.sh' \
+  --exclude='README.md' \
+  --exclude='.git' \
+  ./ "$TARGET_DIR/"
 
-echo "Done!"
+echo "Installation complete!"
