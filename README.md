@@ -1,19 +1,21 @@
 Just a bunch of wallpapers
 
-## Installation
+### Installation
 
-** clone the repo **
-
+**clone the repo**
+```bash
 git clone https://github.com/Kurrode/wallpapers.git
-
-** cd into it **
-
+```
+**cd into it**
+```bash
 cd wallpapers
+```
 
-** make the install script executable **
-
+**make the install script executable**
+```bash
 chmod +x install.sh
-
-** run it **
-
+```
+**run it**
+```bash
 ./install.sh
+```
